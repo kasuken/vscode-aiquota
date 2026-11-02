@@ -2,49 +2,67 @@
   <img src="media/logo.png" alt="AI Quota" width="480">
 </p>
 
-# AI Quota
+# AI Quota for VS Code
 
-See what is left of your AI subscriptions without leaving VS Code.
+**Know which AI you can use next. Before you hit the limit.**
 
-AI Quota puts Claude, ChatGPT / Codex, Antigravity, GitHub Copilot, OpenCode Go,
-and Freebuff in one theme-native dashboard, an activity bar sidebar, and a
-compact status bar indicator. The **Your AI capacity** overview shows which
-providers have confirmed quota available, each allowance's remaining percentage,
-the next confirmed reset, and accounts that need attention. The status bar uses
-the same overview: for example, **AI Quota 4/6 available** with an attention count.
-Hover for each provider's remaining allowances and the next confirmed reset;
-click to open the dashboard.
+Track remaining quota and reset times for **Claude, ChatGPT / Codex,
+Antigravity, GitHub Copilot, OpenCode Go, and Freebuff** without leaving your
+editor. One dashboard. Six providers. No more checking six separate usage pages.
 
-Capacity is not a universal credit balance: providers use different units.
-Five-hour and weekly windows for one allowance are represented by their tightest
-limit, never added together. Independent Antigravity model groups and finite
-Copilot chat/premium allowances remain separate. Expired, stale, projected, and
-missing values do not count as confirmed capacity. Unquantified or potentially
-unlimited usage is labeled rather than converted into a percentage.
+[Install from the VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=emanuelebartolesi.vscode-aiquota)
+&middot; [View on GitHub](https://github.com/kasuken/vscode-aiquota)
+&middot; [Report an issue](https://github.com/kasuken/vscode-aiquota/issues)
 
-## Brand assets
+![AI Quota in VS Code: sidebar and dashboard showing remaining quota, reset times, and a status bar with four of six providers available.](media/screenshot.png)
 
-- [Extension icon](media/icon.png) (256 x 256 PNG; [SVG source](media/icon.svg)).
-- [Logo](media/logo.png) (1520 x 400 PNG; [SVG source](media/logo.svg)).
-- [Social sharing image](media/social.png) (1280 x 640 PNG; [SVG source](media/social.svg)).
+*Actual extension UI with clearly labeled sample accounts, not personal usage data.
+The dashboard, sidebar, and status bar share the same capacity overview.*
 
-Use the PNG logo in documentation and the PNG sharing image for social posts.
-The SVG sources are available for editing. The activity bar uses a separate
-monochrome version of the same mark.
-To regenerate the PNG exports after editing the SVGs, run `npm run branding`
-(requires Playwright's Chromium: `npx playwright install chromium`).
+## Stay in flow, not in usage pages
+
+You are deep in a task. Claude is running low. Codex still has room. Your next
+reset is two hours away. AI Quota makes that visible before an unexpected limit
+interrupts your work.
+
+- **See your options at a glance.** Remaining percentages and the next confirmed
+  reset, with separate allowances where providers report them.
+- **Keep quota where you work.** Open the full dashboard, leave the activity bar
+  sidebar visible, or glance at the compact status bar.
+- **Know what needs attention.** Spot low allowances, expired sessions, and
+  disconnected providers without mistaking stale data for available capacity.
+- **Use the logins you already have.** Reads supported CLI sessions; Copilot can
+  also use your VS Code GitHub session. No API keys to paste into settings.
+- **Make it yours.** Select only the providers you use, choose their order, and
+  adjust automatic refresh. The interface follows your VS Code theme.
+
+**Free, MIT-licensed, and open source. No analytics or telemetry.**
 
 ## Get started
 
-1. Install the VSIX using **Extensions: Install from VSIX**.
-2. Run **AI Quota: Select Providers** from the Command Palette.
-3. Sign in to those providers using their existing CLIs, then run
-   **AI Quota: Open Dashboard**. Copilot also supports **AI Quota: Sign In to GitHub**.
-   For Antigravity CLI, run **`agy`**, sign in, and use **`/usage`** once.
-   The legacy Antigravity IDE is also supported.
+1. **Install [AI Quota](https://marketplace.visualstudio.com/items?itemName=emanuelebartolesi.vscode-aiquota)**
+   from the VS Code Marketplace.
+2. Open the Command Palette (`Ctrl+Shift+P` on Windows/Linux, `Cmd+Shift+P` on
+   macOS) and run **AI Quota: Select Providers**.
+3. Sign in through your providers' existing CLIs, then run
+   **AI Quota: Open Dashboard**.
+   For Copilot, you can also run **AI Quota: Sign In to GitHub**.
+   For Antigravity, run `agy`, sign in, and use `/usage` once.
 
-Nothing is queried until you select a provider. The dashboard can also be
-opened from the activity bar or status bar.
+Click the **AI Quota activity bar icon** to open the sidebar, or click the
+**status bar indicator** to open the dashboard. Checks refresh every five
+minutes by default; use **AI Quota: Refresh** whenever you need a fresh check.
+
+Nothing is read or queried until you choose a provider.
+
+Prefer a terminal? Install with:
+
+```shell
+code --install-extension emanuelebartolesi.vscode-aiquota
+```
+
+Requires VS Code **1.100+**. You can also install a packaged `.vsix` with
+**Extensions: Install from VSIX**.
 
 ## Provider support
 
@@ -71,6 +89,9 @@ These are unofficial provider APIs and can change. A successful response with
 no finite Copilot quotas is shown as such, not as an invented percentage.
 
 ### Antigravity setup and limitations
+
+<details>
+<summary>CLI setup, credential locations, and legacy IDE fallback</summary>
 
 Select `antigravity` in **AI Quota: Select Providers**. Run **`agy`**, sign in,
 and use **`/usage`** to refresh the CLI's saved session. Then refresh AI Quota.
@@ -136,7 +157,29 @@ Legacy IDE request and response fields were verified against the public
 (`src/quotaService.ts`, `src/types.ts`, and process detectors). The client here is
 an independent implementation restricted to status reads.
 
-## Freshness and privacy
+</details>
+
+## Quota you can read, not a made-up score
+
+The status bar shows, for example, **AI Quota 4/6 available** with an attention
+count. Hover to see remaining allowances and the next confirmed reset; click
+to open the dashboard.
+
+Capacity is **not a universal credit balance**: providers use different units.
+Five-hour and weekly windows for one allowance are represented by their tightest
+limit, never added together. Independent Antigravity model groups and finite
+Copilot chat/premium allowances remain separate. Expired, stale, projected, and
+missing values do not count as confirmed capacity. Unquantified or potentially
+unlimited usage is labeled rather than converted into a percentage.
+
+## Your credentials stay yours
+
+AI Quota reads existing sessions and sends quota requests to the selected
+providers. It does not proxy your credentials through an AI Quota server.
+Tokens are never cached, logged, or passed to the dashboard.
+
+<details>
+<summary>Privacy, caching, network behavior, and data freshness</summary>
 
 - Checks run every five minutes by default, with an eight-second request timeout.
 - Failed requests retain the last successful values, marked `~` (approximate).
@@ -153,13 +196,75 @@ an independent implementation restricted to status reads.
 The extension runs locally even in remote workspaces. It reads credentials
 from the computer running VS Code, not a remote container or SSH host.
 
+</details>
+
 ## Settings and commands
 
-Search settings for `AI Quota` to configure provider order, refresh interval,
-timeout, credential paths, and status bar visibility. Set `aiquota.providers`
-to an ordered array of `claude`, `codex`, `antigravity`, `copilot`, `opencode`,
-and/or `freebuff`. **AI Quota: Show Logs** displays actionable provider errors
-without credential content.
+| Command | What it does |
+| --- | --- |
+| **AI Quota: Open Dashboard** | Open your full capacity overview |
+| **AI Quota: Select Providers** | Choose which subscriptions to check |
+| **AI Quota: Refresh** | Check selected providers now |
+| **AI Quota: Sign In to GitHub** | Connect a GitHub session for Copilot |
+| **AI Quota: Open Settings** | Customize refresh, display, and credential paths |
+| **AI Quota: Show Logs** | Inspect actionable provider errors without tokens |
+
+Search VS Code settings for `AI Quota`, or start with these **user settings**:
+
+```json
+{
+  "aiquota.providers": ["claude", "codex", "copilot"],
+  "aiquota.refreshIntervalSeconds": 300,
+  "aiquota.showStatusBar": true
+}
+```
+
+Provider IDs are `claude`, `codex`, `antigravity`, `copilot`, `opencode`, and
+`freebuff`; their order in the array is their display order.
+
+## FAQ
+
+**Does this increase my quota or switch models for me?**
+
+No. AI Quota is a read-only monitor. It helps you decide what to use next;
+it does not change subscription limits, route prompts, or switch providers.
+
+**Why is a provider asking me to sign in again?**
+
+The saved session may have expired. Sign in through that provider's CLI and
+refresh AI Quota. For Antigravity, run `agy` and `/usage`. Use
+**AI Quota: Show Logs** for details.
+
+**What does `~` mean?**
+
+The value is approximate: it may be cached after a failed check, older than
+the freshness window, or projected after a reset. It is not confirmed capacity.
+
+**Does this track API spending?**
+
+No. It tracks supported flat-rate subscriptions, not pay-per-token API keys,
+OpenCode Zen, or a combined monetary balance.
+
+**Is this an official provider extension?**
+
+No. AI Quota is an independent project, not affiliated with or endorsed by the
+listed providers. Unofficial quota APIs can change; please report broken
+integrations with provider names and sanitized logs, never credentials.
+
+## Help make quota checking one less distraction
+
+If AI Quota saves you a trip to a usage page:
+
+- [Star the project on GitHub](https://github.com/kasuken/vscode-aiquota) so other
+  developers can find it.
+- [Leave an honest Marketplace review](https://marketplace.visualstudio.com/items?itemName=emanuelebartolesi.vscode-aiquota&ssr=false#review-details).
+- Share it with the teammate juggling AI subscriptions.
+- [Report a bug or suggest an improvement](https://github.com/kasuken/vscode-aiquota/issues).
+  Include your OS, VS Code version, provider, and sanitized error message.
+  Never attach credential files or tokens.
+
+Contributions are welcome. For a new provider integration, open an issue first
+to discuss authentication and which quota information can be read safely.
 
 ## Development
 
@@ -191,3 +296,24 @@ For an explicitly opted-in live CLI check, set `AIQUOTA_UI_LIVE_CLI=1` before
 running `npm run test:ui`. This reads your saved CLI session and real quota;
 normal UI tests use fixtures and integration tests use a missing-file override
 so they never read your OS keyring.
+
+### Brand assets and screenshots
+
+- [Extension icon](media/icon.png) (256 x 256 PNG; [SVG source](media/icon.svg)).
+- [Logo](media/logo.png) (1520 x 400 PNG; [SVG source](media/logo.svg)).
+- [Social sharing image](media/social.png) (1280 x 640 PNG; [SVG source](media/social.svg)).
+- [README screenshot](media/screenshot.png): actual VS Code UI using the
+  development-only sample accounts.
+
+To refresh the README screenshot, run `npm run test:ui` and copy
+`.test-data/dashboard-dark-sidebar.png` to `media/screenshot.png`. Keep the sample
+data notice visible; do not use personal account data in public screenshots.
+
+Use the PNG logo in documentation and the PNG sharing image for social posts.
+The SVG sources are available for editing. To regenerate PNG branding exports,
+run `npm run branding` (requires Playwright's Chromium:
+`npx playwright install chromium`).
+
+## License
+
+[MIT](LICENSE). See [third-party notices](THIRD-PARTY-NOTICES) for acknowledgments.

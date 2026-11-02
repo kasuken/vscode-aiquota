@@ -1,13 +1,17 @@
 {
   "name": "vscode-aiquota",
   "displayName": "AI Quota",
-  "description": "Your AI subscriptions, remaining quota, and reset times in one quiet dashboard.",
-  "version": "0.1.3",
+  "description": "Track Claude, ChatGPT / Codex, GitHub Copilot, Antigravity, OpenCode Go, and Freebuff quota and reset times in one VS Code dashboard.",
+  "version": "0.1.4",
   "publisher": "emanuelebartolesi",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/kasuken/vscode-aiquota.git"
+  },
+  "homepage": "https://github.com/kasuken/vscode-aiquota#readme",
+  "bugs": {
+    "url": "https://github.com/kasuken/vscode-aiquota/issues"
   },
   "icon": "media/icon.png",
   "engines": {
@@ -23,7 +27,11 @@
     "codex",
     "copilot",
     "antigravity",
-    "usage"
+    "usage",
+    "chatgpt",
+    "subscription",
+    "rate-limit",
+    "ai"
   ],
   "extensionKind": [
     "ui"
