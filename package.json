@@ -1,0 +1,192 @@
+{
+  "name": "vscode-aiquota",
+  "displayName": "AI Quota",
+  "description": "Your AI subscriptions, remaining quota, and reset times in one quiet dashboard.",
+  "version": "0.1.3",
+  "publisher": "emanuelebartolesi",
+  "license": "MIT",
+  "icon": "media/icon.png",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "AI",
+    "Other"
+  ],
+  "keywords": [
+    "quota",
+    "claude",
+    "codex",
+    "copilot",
+    "antigravity",
+    "usage"
+  ],
+  "extensionKind": [
+    "ui"
+  ],
+  "main": "./dist/src/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    }
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "aiquota.open",
+        "title": "AI Quota: Open Dashboard",
+        "icon": "$(dashboard)"
+      },
+      {
+        "command": "aiquota.refresh",
+        "title": "AI Quota: Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "aiquota.selectProviders",
+        "title": "AI Quota: Select Providers",
+        "icon": "$(settings-gear)"
+      },
+      {
+        "command": "aiquota.signIn",
+        "title": "AI Quota: Sign In to GitHub"
+      },
+      {
+        "command": "aiquota.settings",
+        "title": "AI Quota: Open Settings",
+        "icon": "$(gear)"
+      },
+      {
+        "command": "aiquota.logs",
+        "title": "AI Quota: Show Logs"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "aiquota",
+          "title": "AI Quota",
+          "icon": "media/quota.svg"
+        }
+      ]
+    },
+    "views": {
+      "aiquota": [
+        {
+          "id": "aiquota.sidebar",
+          "name": "Subscriptions",
+          "type": "webview"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "aiquota.refresh",
+          "when": "view == aiquota.sidebar",
+          "group": "navigation"
+        },
+        {
+          "command": "aiquota.selectProviders",
+          "when": "view == aiquota.sidebar",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "AI Quota",
+      "properties": {
+        "aiquota.providers": {
+          "type": "array",
+          "uniqueItems": true,
+          "default": [],
+          "items": {
+            "type": "string",
+            "enum": [
+              "claude",
+              "codex",
+              "antigravity",
+              "copilot",
+              "opencode",
+              "freebuff"
+            ]
+          },
+          "scope": "application",
+          "description": "Providers to query, in display order. Antigravity supports the agy CLI's saved session or a running legacy IDE. Nothing is read or queried until you choose a provider."
+        },
+        "aiquota.refreshIntervalSeconds": {
+          "type": "integer",
+          "default": 300,
+          "minimum": 30,
+          "maximum": 86400,
+          "scope": "application",
+          "description": "Seconds between automatic quota checks."
+        },
+        "aiquota.requestTimeoutSeconds": {
+          "type": "integer",
+          "default": 8,
+          "minimum": 1,
+          "maximum": 60,
+          "scope": "application",
+          "description": "Timeout per provider request."
+        },
+        "aiquota.showStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "scope": "application",
+          "description": "Show the most constrained subscription in the status bar."
+        },
+        "aiquota.credentialPaths": {
+          "type": "object",
+          "default": {},
+          "scope": "machine",
+          "additionalProperties": false,
+          "properties": {
+            "claude": {
+              "type": "string"
+            },
+            "codex": {
+              "type": "string"
+            },
+            "antigravity": {
+              "type": "string"
+            },
+            "copilot": {
+              "type": "string"
+            },
+            "opencode": {
+              "type": "string"
+            },
+            "freebuff": {
+              "type": "string"
+            }
+          },
+          "description": "Optional absolute paths to existing CLI credential JSON files. Antigravity defaults to the OS keyring, then its antigravity-oauth-token file. An override bypasses its keyring. Never put tokens here. Workspace overrides are ignored."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "branding": "node scripts/branding.cjs",
+    "compile": "tsc -p .",
+    "lint": "eslint src test scripts media/*.js",
+    "test": "npm run compile && node --test dist/test/*.test.js",
+    "test:integration": "npm run compile && node scripts/integration.cjs",
+    "test:ui": "npm run compile && node scripts/ui.cjs",
+    "vscode:prepublish": "npm run compile",
+    "package": "vsce package --allow-missing-repository"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.100.0",
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^3.6.0",
+    "eslint": "^9.0.0",
+    "typescript-eslint": "^8.0.0",
+    "playwright": "^1.56.0",
+    "typescript": "^5.9.0"
+  }
+}

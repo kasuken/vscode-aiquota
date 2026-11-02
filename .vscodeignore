@@ -1,0 +1,13 @@
+.vscode/**
+.test-data/**
+.vscode-test/**
+src/**
+test/**
+scripts/**
+node_modules/**
+dist/test/**
+dist/**/*.map
+tsconfig.json
+eslint.config.mjs
+package-lock.json
+.gitignore

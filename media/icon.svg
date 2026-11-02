@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" fill="none">
+  <title>AI Quota</title>
+  <desc>A cyan quota meter forming the letter Q on a deep navy tile.</desc>
+  <rect width="256" height="256" rx="56" fill="#101D35"/>
+  <circle cx="120" cy="116" r="68" stroke="#2B405F" stroke-width="24"/>
+  <path d="M188 116a68 68 0 1 1-68-68" stroke="#39D8E9" stroke-width="24" stroke-linecap="round"/>
+  <path d="m158 154 34 34" stroke="#F3F7FC" stroke-width="24" stroke-linecap="round"/>
+</svg>

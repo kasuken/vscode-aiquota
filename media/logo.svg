@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="200" viewBox="0 0 760 200" fill="none">
+  <title>AI Quota</title>
+  <desc>AI Quota wordmark with a cyan Q-shaped allowance meter.</desc>
+  <rect width="760" height="200" rx="28" fill="#101D35"/>
+  <g transform="translate(24 20) scale(.625)">
+    <circle cx="120" cy="116" r="68" stroke="#2B405F" stroke-width="24"/>
+    <path d="M188 116a68 68 0 1 1-68-68" stroke="#39D8E9" stroke-width="24" stroke-linecap="round"/>
+    <path d="m158 154 34 34" stroke="#F3F7FC" stroke-width="24" stroke-linecap="round"/>
+  </g>
+  <text x="216" y="126" fill="#F3F7FC" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="80" font-weight="650" letter-spacing="-3">AI Quota</text>
+</svg>

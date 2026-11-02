@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" fill="none">
+  <title>AI Quota for Visual Studio Code</title>
+  <desc>Your AI subscriptions, remaining quota, and reset times in one clear view. Supports Claude, Codex, Antigravity, GitHub Copilot, OpenCode Go, and Freebuff.</desc>
+  <rect width="1280" height="640" fill="#101D35"/>
+  <g transform="translate(68 58) scale(.45)">
+    <circle cx="120" cy="116" r="68" stroke="#2B405F" stroke-width="24"/>
+    <path d="M188 116a68 68 0 1 1-68-68" stroke="#39D8E9" stroke-width="24" stroke-linecap="round"/>
+    <path d="m158 154 34 34" stroke="#F3F7FC" stroke-width="24" stroke-linecap="round"/>
+  </g>
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif">
+    <text x="202" y="136" fill="#F3F7FC" font-size="54" font-weight="650" letter-spacing="-2">AI Quota</text>
+    <text x="80" y="280" fill="#F3F7FC" font-size="72" font-weight="650" letter-spacing="-2">
+      <tspan x="80">Your AI subscriptions.</tspan>
+      <tspan x="80" dy="86">One clear view.</tspan>
+    </text>
+    <text x="84" y="430" fill="#B5C5DB" font-size="27">Remaining quota and reset times, right in VS Code.</text>
+    <text x="84" y="552" fill="#B5C5DB" font-size="21">Claude / Codex / Antigravity / GitHub Copilot / OpenCode Go / Freebuff</text>
+    <text x="84" y="592" fill="#39D8E9" font-size="21" font-weight="600">An extension for Visual Studio Code</text>
+  </g>
+  <g transform="translate(970 200)">
+    <rect width="156" height="20" rx="10" fill="#2B405F"/>
+    <rect width="120" height="20" rx="10" fill="#39D8E9"/>
+    <rect y="46" width="156" height="20" rx="10" fill="#2B405F"/>
+    <rect y="46" width="68" height="20" rx="10" fill="#39D8E9"/>
+    <rect y="92" width="156" height="20" rx="10" fill="#2B405F"/>
+    <rect y="92" width="96" height="20" rx="10" fill="#39D8E9"/>
+  </g>
+</svg>
