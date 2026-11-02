@@ -1,5 +1,5 @@
 <p>
-  <img src="media/logo.svg" alt="AI Quota" width="480">
+  <img src="media/logo.png" alt="AI Quota" width="480">
 </p>
 
 # AI Quota
@@ -28,8 +28,9 @@ unlimited usage is labeled rather than converted into a percentage.
 - [Logo](media/logo.png) (1520 x 400 PNG; [SVG source](media/logo.svg)).
 - [Social sharing image](media/social.png) (1280 x 640 PNG; [SVG source](media/social.svg)).
 
-Use the SVG logo in documentation and the PNG sharing image for social posts.
-The activity bar uses a separate monochrome version of the same mark.
+Use the PNG logo in documentation and the PNG sharing image for social posts.
+The SVG sources are available for editing. The activity bar uses a separate
+monochrome version of the same mark.
 To regenerate the PNG exports after editing the SVGs, run `npm run branding`
 (requires Playwright's Chromium: `npx playwright install chromium`).
 
